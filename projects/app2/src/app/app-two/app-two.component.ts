@@ -1,16 +1,19 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { UserService } from '~libs/entity/user/user.service';
 
 @Component({
   selector: 'app-app-two',
   templateUrl: './app-two.component.html',
   styleUrls: ['./app-two.component.scss']
 })
-export class AppTwoComponent implements OnInit {
+export class AppTwoComponent {
+  userCount: number = 0;
 
-  constructor(@Inject(APP_BASE_HREF) readonly baseHref: string) { }
+  constructor(@Inject(APP_BASE_HREF) readonly baseHref: string, private userService: UserService) { }
 
-  ngOnInit(): void {
+  refreshUserCount(): void {
+    this.userCount = this.userService.getUsers().length;
   }
 
 }

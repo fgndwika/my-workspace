@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '~libs/entity/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shell';
+
+  userCount: number = 0;
+
+  constructor(private userService: UserService) {}
+
+  refreshUserCount(): void {
+    this.userCount = this.userService.getUsers().length;
+  }
 }

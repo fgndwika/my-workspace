@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AppOneComponent
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./user-form/user-form.module').then(m => m.UserFormModule)
   }
 ];
 
