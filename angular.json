@@ -131,7 +131,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/app1",
             "index": "projects/app1/src/index.html",
@@ -146,7 +146,9 @@
             "styles": [
               "projects/app1/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/app1/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -168,7 +170,8 @@
                   "with": "projects/app1/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/app1/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -182,21 +185,28 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "app1:build:production"
+              "browserTarget": "app1:build:production",
+              "extraWebpackConfig": "projects/app1/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "app1:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 5001,
+            "publicHost": "http://localhost:5001",
+            "extraWebpackConfig": "projects/app1/webpack.config.js"
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "app1:build"
+            "browserTarget": "app1:build",
+            "extraWebpackConfig": "projects/app1/webpack.config.js"
           }
         },
         "test": {
