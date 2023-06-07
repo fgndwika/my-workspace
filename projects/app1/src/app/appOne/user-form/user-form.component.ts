@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '~libs/entity/user/user.model';
-import { UserService } from '~libs/entity/user/user.service';
+import { User, UserService } from '~libs';
 
 @Component({
   selector: 'app-user-form',

@@ -22,7 +22,7 @@
       "dom"
     ],
     "paths": {
-      "~libs/*": ["./projects/libs/*"]
+      "~libs": ["./projects/libs"],
     }
   },
   "angularCompilerOptions": {

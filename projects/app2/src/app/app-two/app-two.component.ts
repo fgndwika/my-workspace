@@ -1,6 +1,6 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { UserService } from '~libs/entity/user/user.service';
+import { Component, Inject } from '@angular/core';
+import { UserService } from '~libs';
 
 @Component({
   selector: 'app-app-two',
