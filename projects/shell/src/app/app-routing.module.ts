@@ -8,9 +8,18 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:5001/remoteEntry.js',
+        remoteEntry: 'http://localhost:8081/app1/remoteEntry.js',
         exposedModule: './Module'
       }).then(m => m.AppOneModule)
+  },
+  {
+    path: 'app2',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:8081/app2/remoteEntry.js',
+        exposedModule: './Module'
+      }).then(m => m.AppTwoModule)
   }
 ];
 
