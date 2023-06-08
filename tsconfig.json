@@ -23,6 +23,7 @@
     ],
     "paths": {
       "~libs": ["./projects/libs/index.ts"],
+      "~libs/*": ["./projects/libs/*"]
     }
   },
   "angularCompilerOptions": {
