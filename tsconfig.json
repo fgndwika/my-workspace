@@ -22,7 +22,7 @@
       "dom"
     ],
     "paths": {
-      "libs": ["./projects/libs/index.ts"],
+      "~libs": ["./projects/libs/index.ts"],
     }
   },
   "angularCompilerOptions": {
