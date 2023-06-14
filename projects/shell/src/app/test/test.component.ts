@@ -6,7 +6,6 @@ import { TestStore } from './test.store';
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
-  providers: [TestStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestComponent {
@@ -16,12 +15,15 @@ export class TestComponent {
 
   id$: Observable<string>;
   counter$: Observable<number>;
+  store: TestStore;
 
-  constructor(private readonly store: TestStore) {
-    this.id$ = store.id$;
-    this.counter$ = store.counter$;
+  constructor() {
+    this.store = new TestStore();
 
-    store.inc(Math.floor(Math.random() * 100)+1);
+    this.id$ = this.store.id$;
+    this.counter$ = this.store.counter$;
+
+    this.store.inc(Math.floor(Math.random() * 100)+1);
   }
 
   increase() {
