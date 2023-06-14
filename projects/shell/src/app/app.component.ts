@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'shell';
+  tests: Array<string> = [];
+
+  add() {
+    this.tests.push(new Date().getTime().toString());
+  }
+
+  removeRandom() {
+    if (this.tests.length === 0) {
+      return;
+    }
+
+    const randIndex = Math.floor(Math.random() * (this.tests.length - 1))
+    this.tests.splice(randIndex, 1);
+  }
 }

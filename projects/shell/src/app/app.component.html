@@ -1,1 +1,7 @@
-this is the shell
+<button (click)="add()">Add</button>
+<button (click)="removeRandom()">Remove</button>
+<ul>
+  <li *ngFor="let test of tests">
+    <app-test [id]="test"></app-test>
+  </li>
+</ul>
