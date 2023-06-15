@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { finalize } from 'rxjs';
 
 export interface TestState {
   id: string;
@@ -15,10 +14,7 @@ export const initialState: TestState = {
 @Injectable()
 export class TestStore extends ComponentStore<TestState> implements OnDestroy {
   readonly id$ = this.select(state => state.id);
-  readonly counter$ = this.select(state => state.counter).pipe(finalize(() => {
-    const { id, counter } = this.get();
-    console.log(`${id}: counter$ observable finalized (last value: ${counter})`);
-  }));
+  readonly counter$ = this.select(state => state.counter);
 
   readonly setId = this.updater<string>((state, id) => {
     return { ...state, id };
@@ -30,7 +26,7 @@ export class TestStore extends ComponentStore<TestState> implements OnDestroy {
   });
 
   constructor() {
-    super(initialState);
+    super(initialState)
   }
 
   override ngOnDestroy() {
