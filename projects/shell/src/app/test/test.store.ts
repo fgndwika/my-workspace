@@ -1,5 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
+import { pipe, tap, withLatestFrom } from 'rxjs';
 
 export interface TestState {
   id: string;
@@ -33,4 +34,9 @@ export class TestStore extends ComponentStore<TestState> implements OnDestroy {
     console.log(`TestStore ${this.get(state => state.id)} ngOnDestroy`);
     super.ngOnDestroy();
   }
+
+  noParamEffect = this.effect<void>(pipe(
+    withLatestFrom(this.counter$, (_, counter: number) => counter),
+    tap((counter: number) => alert(`noParamEffect ${counter}`))
+  ));
 }

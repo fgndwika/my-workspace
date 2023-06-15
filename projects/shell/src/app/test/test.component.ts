@@ -27,4 +27,8 @@ export class TestComponent {
   increase() {
     this.store.inc();
   }
+
+  runEffect() {
+    this.store.noParamEffect();
+  }
 }
